@@ -84,9 +84,9 @@ class PrivateChannel extends EndpointAuthorizableChannel<PrivateChannelState,
     required this.publicStreamGetter,
     required this.publicEventEmitter,
     required this.connectionDelegate,
-    required String name,
+    required this.name,
     required this.authorizationDelegate,
-  }) : name = 'private-$name';
+  });
 
   /// Unlike the public channels, this channel:
   /// 1. Grabs the authorization data of type [PrivateChannelAuthorizationData].
@@ -101,7 +101,6 @@ class PrivateChannel extends EndpointAuthorizableChannel<PrivateChannelState,
     final fixatedLifeCycleCount = startNewAuthRequestCycle();
     await setAuthKeyFromDelegate();
     final currentAuthKey = authData?.authKey;
-
     if (fixatedLifeCycleCount < authRequestCycle ||
         currentAuthKey == null ||
         state?.status == ChannelStatus.unsubscribed) {
