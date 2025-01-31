@@ -103,9 +103,9 @@ class PresenceChannel extends EndpointAuthorizableChannel<PresenceChannelState,
     required this.publicStreamGetter,
     required this.publicEventEmitter,
     required this.connectionDelegate,
-    required this.name,
+    required String name,
     required this.authorizationDelegate,
-  });
+  }) : name = 'presence-$name';
 
   /// Unlike the public channels, this channel:
   /// 1. Grabs the authorization data of type [PresenceChannelAuthorizationData].

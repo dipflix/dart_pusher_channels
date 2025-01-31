@@ -19,7 +19,7 @@ abstract class PusherChannelsPackageLogger {
   @internal
   static void log(Object? object) {
     if (_logsEnabled) {
-      _handler(object);
+      _handler('---- Pusher Channels ----\n$object\n');
     }
   }
 
